@@ -1,16 +1,22 @@
+---
+layout: post
+title:  "Make common abstractions testable"
+date:   2020-12-25 22:52:51 +0000
+categories: swift tests
+---
 # Make common abstractions testable
 
 During development of a project you might find some abstractions so usefull, you start reusing them throughout the codebase. In this article we are going to learn a trick how to make tests API supporting these abstractions.
 
 Imagine you have a storage abstraction like this:
-```swift
+{% highlight swift %}
 /// Abstract value storage of `Codable` types.
 class ValueStorage<Value: Codable> {
     func save(_ value: Value, completion: @escaping (Error?) -> Void) {
         // ...
     }
 }
-```
+{% endhighlight %}
 
 `ValueStorage` is used to store downloaded data in `URLDownloader`:
 ```swift
